@@ -1,6 +1,6 @@
 # cs-hud
 ### 此项目fork自 [cs-hud](https://github.com/drweissbrot/cs-hud)
-### this repo fork from [cs-hud](https://github.com/drweissbrot/cs-hud)
+### this project is a fork of [cs-hud](https://github.com/drweissbrot/cs-hud)
 
 一个免费且可自定义的观战 HUD，用于你的 **Counter-Strike 2（以及 CS:GO）** 直播。
 
