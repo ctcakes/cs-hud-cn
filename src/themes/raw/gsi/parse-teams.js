@@ -3,21 +3,21 @@ import { getOverriddenTeamName, getTeamNameOverrides } from '/hud/gsi/helpers/te
 
 const getGrenadeKey = (weaponName) => {
 	switch (weaponName) {
-		case 'weapon_decoy': return 'decoy'
-		case 'weapon_flashbang': return 'flashbang'
-		case 'weapon_hegrenade': return 'hegrenade'
-		case 'weapon_smokegrenade': return 'smokegrenade'
+		case 'weapon_decoy': return '诱饵弹'
+		case 'weapon_flashbang': return '闪光弹'
+		case 'weapon_hegrenade': return '手雷'
+		case 'weapon_smokegrenade': return '烟雾弹'
 
 		case 'weapon_incgrenade':
 		case 'weapon_molotov':
-			return 'molotov'
+			return '燃烧瓶'
 	}
 }
 
 const getFallbackNameFromSide = (side) => {
 	switch (side) {
-		case 2: return 'Terrorists'
-		case 3: return 'Counter-Terrorists'
+		case 2: return 'T'
+		case 3: return 'CT'
 	}
 }
 
