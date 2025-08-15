@@ -3,13 +3,13 @@ import { gsiState, options, teams } from '/hud/core/state.js'
 const getPlainReason = (reason) => {
 	// TODO add anything missing
 	switch (reason) {
-		case 'ct_win_defuse': return 'defuse'
-		case 'ct_win_time': return 'time'
-		case 't_win_bomb': return 'bomb'
+		case 'ct_win_defuse': return '炸弹拆除'
+		case 'ct_win_time': return '时间耗尽'
+		case 't_win_bomb': return '炸弹爆炸'
 
 		case 'ct_win_elimination':
 		case 't_win_elimination':
-			return 'elimination'
+			return '消灭对手'
 	}
 }
 
