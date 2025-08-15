@@ -14,12 +14,12 @@ const getFirebombType = (grenadeId, owner) => {
 
 	if (ownerActiveGrenade.name === 'weapon_incgrenade') {
 		cachedFirebombTypes[grenadeId] = 'incgrenade'
-		return 'incgrenade'
+		return '燃烧弹'
 	}
 
 	if (ownerActiveGrenade.name === 'weapon_molotov') {
 		cachedFirebombTypes[grenadeId] = 'molotov'
-		return 'molotov'
+		return '燃烧瓶'
 	}
 }
 
