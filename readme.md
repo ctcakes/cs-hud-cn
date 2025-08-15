@@ -1,93 +1,88 @@
 # cs-hud
-A Free and Customizable Spectator HUD for Your Counter-Strike 2 (and CS:GO) Streams.
+### 此项目fork自 [cs-hud](https://github.com/drweissbrot/cs-hud)
+### this repo fork from [cs-hud](https://github.com/drweissbrot/cs-hud)
+
+一个免费且可自定义的观战 HUD，用于你的 **Counter-Strike 2（以及 CS:GO）** 直播。
 
 ![](assets/cs2-hud-screenshot-1080.png)
 
-## Getting Started
-The easiest way is to use the pre-packaged binaries, but other options will be available in the future.
+## 快速开始
+最简单的方式是使用预打包的可执行文件，未来也会提供其他运行方式。  
 <!-- TODO write, then link to more in-depth guides for running via yarn, docker -->
 
-1. Download [`cs-hud-server-win.exe`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-win.exe) if you're on Windows, or [`cs-hud-server-linux`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-linux) if you're on Linux. You can find more details on the [Releases tab](https://github.com/drweissbrot/cs-hud/releases/latest).
-1. Also download [`gamestate_integration_drweissbrot_hud.cfg`](https://github.com/drweissbrot/cs-hud/releases/latest/download/gamestate_integration_drweissbrot_hud.cfg).
-1. Head to your CS2 folder and the `game/csgo/cfg` subdirectory, by default on Windows that is `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg`. You can also find it by opening your Steam library, right-clicking CS2, `Properties...`, `Installed Files`, `Browse...`, and then heading into the `game` directory, then into `csgo`, then `cfg`.
-1. Save `gamestate_integration_drweissbrot_hud.cfg` there.
-1. Start CS2 (restart it if you already had it open), and find a match to spectate. You could for example play a demo, or spectate a friend via CSTV.
-1. Now run `cs-hud-server-win.exe` or `cs-hud-server-linux`.
-1. Open http://localhost:31982/hud in your favorite browser, and you should see the HUD.
+1. 如果你是 Windows 用户，下载 [`cs-hud-server-win.exe`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-win.exe)；如果是 Linux 用户，下载 [`cs-hud-server-linux`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-linux)。更多信息可在 [Releases 标签页](https://github.com/drweissbrot/cs-hud/releases/latest) 查看。
+2. 同时下载 [`gamestate_integration_drweissbrot_hud.cfg`](https://github.com/drweissbrot/cs-hud/releases/latest/download/gamestate_integration_drweissbrot_hud.cfg)。
+3. 打开你的 CS2 文件夹，进入 `game/csgo/cfg` 子目录。在 Windows 默认路径是：
+```C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg```
+你也可以通过 Steam 库，右键 CS2 → `属性...` → `已安装文件` → `浏览...`，然后依次进入 `game/csgo/cfg`。
+4. 将 `gamestate_integration_drweissbrot_hud.cfg` 保存到此目录。
+5. 启动 CS2（如果已经打开，需要重启），找到一场可观战的比赛。你可以播放 demo，也可以通过 CSTV 观战朋友。
+6. 运行 `cs-hud-server-win.exe` 或 `cs-hud-server-linux`。
+7. 在你喜欢的浏览器中打开 http://localhost:31982/hud，你应该能看到 HUD。
 
-There's also the config page available at http://localhost:31982/config, and a separate radar for observing at http://localhost:31982/radar.  
-There are also [some console commands you may want to use](docs/cvars.md).
+此外，还有配置页面：http://localhost:31982/config，以及用于观战的雷达：http://localhost:31982/radar。  
+还有一些你可能想用的 [控制台命令](docs/cvars.md)。
 
-Depending on how you actually want to use the HUD, you've now got two options:
+根据你的使用方式，你现在有两种选择：
 
-### OBS Browser Source
-This is a good choice if you're fine with not seeing the HUD on top of the game yourself, or you can't or don't want to run the game in Fullscreen Windowed.
-It'll likely work similarly in alternatives to OBS.
+### OBS 浏览器来源
+如果你不介意自己在游戏中看不到 HUD，或者不能/不想用全屏窗口模式运行游戏，这是一个不错的选择。  
+在其他直播软件中也可能以类似方式工作。
 
-1. Make sure you've followed the instructions above. You should see a console window saying `cs-hud is active`.
-1. In OBS, add a Game Capture or Window Capture, and select Counter-Strike.
-1. Add a Browser source. Set the `URL` to `http://localhost:31982/hud?transparent`, the `Width`, `Height`, and `FPS` to the values you want, and make sure that `Custom CSS` is empty.
-1. Find a match to spectate in CS, and the Browser source should show the HUD. (The Browser source will not show anything when you're not spectating a match.)
+1. 确保你已经完成了上面的步骤，你应该能看到控制台显示 `cs-hud is active`。
+2. 在 OBS 中，添加游戏捕获或窗口捕获，选择 Counter-Strike。
+3. 添加浏览器来源。将 `URL` 设置为 `http://localhost:31982/hud?transparent`，设置你想要的 `宽度`、`高度` 和 `FPS`，并确保 `自定义 CSS` 为空。
+4. 找到一场可观战的比赛，浏览器来源就会显示 HUD。（如果你不在观战状态，则不会显示任何内容。）
 
-### Fullscreen Windowed
-Alternatively, you can use a separate executable to overlay the HUD on top of CS.
+### 全屏窗口模式
+或者，你也可以用单独的可执行文件在 CS 上叠加 HUD。
 
-1. Make sure you've followed the instructions above. You should see a console window saying `cs-hud is active`.
-1. Download [`cs-hud-overlay-win32-x64.zip`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-win32-x64.zip) on Windows, or [`cs-hud-overlay-linux-x64.tar.gz`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-linux-x64.tar.gz) on Linux. Extract all files.
-1. Run `cs-hud-overlay.exe` on Windows, or `cs-hud-overlay` on Linux.
-1. Open Counter-Strike, go to the Settings, `Video`, and set the `Display Mode` to `Fullscreen Windowed`.
-1. Find a match to spectate in CS. The HUD should now overlay your screen.
-1. If the HUD is on the wrong monitor, select it in the taskbar, and press `Win`+`Shift`+Arrow keys to move it to the correct monitor.
+1. 确保你已经完成了上面的步骤，你应该能看到控制台显示 `cs-hud is active`。
+2. 下载 [`cs-hud-overlay-win32-x64.zip`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-win32-x64.zip)（Windows）或 [`cs-hud-overlay-linux-x64.tar.gz`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-linux-x64.tar.gz)（Linux），解压所有文件。
+3. 运行 `cs-hud-overlay.exe`（Windows）或 `cs-hud-overlay`（Linux）。
+4. 打开 CS，进入 设置 → 视频，将 `显示模式` 设置为 全屏窗口。
+5. 找到一场可观战的比赛，HUD 会叠加在屏幕上。
+6. 如果 HUD 出现在错误的显示器上，可在任务栏选择窗口，按 `Win + Shift + 方向键` 移动到正确显示器。
 
+## 常见问题
 
-## FAQ
+### 支持 CS2 吗？
+支持。  
+该 HUD 在 CS:GO 和 CS2 中都能正常工作。如果发现异常，请 [提交 issue](https://github.com/drweissbrot/cs-hud/issues)。
 
-### Does this work with CS2?
-Yes.  
-Everything should work with both CS:GO and CS2. If you spot anything weird, [please open an issue.](https://github.com/drweissbrot/cs-hud/issues)
+### 可以用于我的活动吗？
+可以。  
+不要求署名，但如果可能，请在某处附上该 GitHub 项目链接。
 
-### Can I use this for my event?
-Yes.  
-Attribution is not required, but if possible, please include a link to this GitHub project somewhere.
+### 为什么要使用这个 HUD？
+CS 游戏内置的观战 HUD 并不是为视频设计的。  
+在直播中，你不能简单按 Tab 就知道某人击杀数。  
+CS2 早期甚至不显示玩家名字！  
+像这个自定义 HUD 专为视频设计：信息完整、在大屏上更清晰、视觉上也更美观。  
 
-### Why would I use this?
-Counter-Strike's in-game spectator HUD isn't designed for video.
-In a stream you can't, for example, just press Tab when you want to know how many kills someone has.
-In the early days of CS2, it didn't even show player names!  
-Custom HUDs like this one are designed for video: They show you everything, are more readable on a big TV, and just look a bit nicer than the game.
+为什么选择这个 HUD？它易于使用、易于扩展和定制，而且免费。  
+（请注意，这是个人爱好项目，如果你是大型赛事组织者，可能需要有 SLA 的支持，建议另寻其他方案 :D）
 
-Why would you use this HUD specificially? It's pretty easy to use, easy to extend and customize to your needs, and free.
-(Please do note that this is a passion project, so if you're a big TO that needs support SLAs, you might want to look elsewhere :D)
+### 如何修改颜色/字体/缩放？
+简单的视觉修改可通过配置页面 http://localhost:31982/config 的 `样式覆盖` 进行：
 
-### How do I change the colors/font/X?
-For simple visual changes like colors and fonts, open the HUD config page at http://localhost:31982/config and scroll down to `Style Overrides`:
+- 修改颜色：选择颜色 → 点击保存 → 强制刷新 HUD。大多数元素使用 `css.terrorists-fill-rgb`（及对应 CT 颜色），大多数文字使用 `css.terrorists-text-rgb` 等。注意，颜色修改需要刷新 HUD 才会生效。
+- 修改字体：在 `css.primary-font-family` 文本框输入字体名称 → 点击保存 → 强制刷新 HUD。字体需安装在你的电脑上。注意，字体修改也需要刷新 HUD 才生效。
+- 修改缩放：在 `css.base-scale-factor` 文本框输入值 → 点击保存 → 强制刷新 HUD。默认约为 `10px`，若想放大两倍输入 `20px`。值过大或过小可能破坏布局，修改也需刷新 HUD 才生效。
 
-To change a color, select the color you want to use, then press `Save` and `Force HUD Refresh`.
-Most surfaces use the `css.terrorists-fill-rgb` color (and it's CT counterpart), most text uses `css.terrorists-text-rgb`, etc.
-Note that color changes are only applied after refreshing the HUD.
+如果想修改其他内容，可查看 [主题文档](docs/theming.md)。
 
-To change the font, type in the name of the font you want to use in the `css.primary-font-family` textbox, then press `Save` and `Force HUD Refresh`.
-The font needs to be installed on your PC.
-Note that font changes are only applied after refreshing the HUD.
+### 需要帮助！
+请先 [查看 docs 文件夹](https://github.com/drweissbrot/cs-hud/tree/master/docs)。  
+如果没解决你的问题，请 [提交 issue](https://github.com/drweissbrot/cs-hud/issues)。  
+请不要通过邮件询问帮助（其他内容可通过邮件联系）。
 
-If you want everything to be a bit more zoomed in or zoomed out, type something into the `css.base-scale-factor` textbox, then press `Save` and `Force HUD Refresh`.
-By default this is roughly equivalent to `10px`, so if you want things to be twice as big, type in `20px`.
-Things will likely break if you go too small or too big.
-Note that changes to the scale factor are only applied after refreshing the HUD.
-
-If you want to change something else, [have a look at the docs](docs/theming.md).
-
-### I need help!
-Please [have a look at the docs folder](https://github.com/drweissbrot/cs-hud/tree/master/docs) first.
-If nothing in there helps you, [please open an issue.](https://github.com/drweissbrot/cs-hud/issues)
-Please don't send me emails asking for help (emails about other things are fine).
-
-
-## Credits
-Special Thanks to [readtldr.gg](https://readtldr.gg) for providing [Simple Radar](https://readtldr.gg/simpleradar), the clean and readable minimaps included in this project.
-([You can also use them in the game, they're pretty great!](https://readtldr.gg/simpleradar))
+## 致谢
+特别感谢 [readtldr.gg](https://readtldr.gg) 提供 [Simple Radar](https://readtldr.gg/simpleradar)，本项目中使用的清晰可读小地图。  
+([你也可以在游戏中使用，非常棒！](https://readtldr.gg/simpleradar))
 
 ![](assets/simpleradar.webp)
 
-Big shoutout to [u/Bkid](https://www.reddit.com/user/bkid) for [documenting most of Game State Integration](https://www.reddit.com/r/GlobalOffensive/comments/cjhcpy/game_state_integration_a_very_large_and_indepth).
-This project wouldn't have happened without that post.
+特别感谢 [u/Bkid](https://www.reddit.com/user/bkid) 对 Game State Integration 的详细文档。  
+没有那篇帖子，这个项目也不会存在。
+
